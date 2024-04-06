@@ -38,9 +38,6 @@ public class GUI extends Application {
     private boolean first5Seconds=true;
 
 
-	
-	private Thread updateThread;
-
     @Override
     public void start(Stage primaryStage) {
 
