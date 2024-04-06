@@ -97,30 +97,7 @@ public class GUI extends Application {
         primaryStage.setTitle("Immigration Control - One Question Decision");
         primaryStage.show();
         
-        Thread timeThread = new Thread(() -> {
-            while (true) {
-                try {
-                	if (first5Seconds) {
-                		Thread.sleep(0); 
-                		first5Seconds=false;
-                	}else Thread.sleep(5000);
-                } 
-                catch (InterruptedException ex) { 
-                	return;
-                }
- 
-                Platform.runLater(() -> {
-                    LocalTime newTime = baseTime.plusMinutes(5 * timeIncrement);
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-                    String formattedTime = newTime.format(formatter);
-                    timeLabel.setText("Current time: " + formattedTime);
-                    timeIncrement++; 
-                });
-            }
-        }); 
-
-        timeThread.setDaemon(true); //deamon turn off thread when we close app
-        timeThread.start();
+        
     }
         
     
