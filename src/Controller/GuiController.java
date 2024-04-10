@@ -150,7 +150,7 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 				  
 				 if (leftHandedTerroristOrTerrorist==0) {		//chance of left-handed 1/2
 					 Terrorist terroristPerson= new Terrorist(); 
-					 textArea.appendText(terroristPerson.terroristAttack());
+//					 textArea.appendText(terroristPerson.terroristAttack());
 					 textArea.appendText("GAME OVER\n"); 
 					 textArea.appendText("__________________________________________________________\n");
 					 displayStatistics(textArea);
