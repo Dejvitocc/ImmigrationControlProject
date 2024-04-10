@@ -42,7 +42,7 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
         Consumer<Boolean> visaConsumer = haveVisa -> {
             if (haveVisa) {
                 textArea.appendText("Yes, I do...\n");
-                displayPersonWithValidVisa(textArea);
+                displayPersonWithValidVisa(textArea); 
             } else {
                 textArea.appendText("No, I do not...\n");
                 displayPersonWithoutValidVisa(textArea);
