@@ -141,7 +141,7 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 			int leftHandedTerroristOrTerrorist=random.nextInt(2);	
 			
 			if (chanceOfTerroristAttack<1) {					//chance of attack 1/5
-				 
+				  
 				 if (leftHandedTerroristOrTerrorist==0) {		//chance of left-handed 1/2
 					 Terrorist terroristPerson= new Terrorist(); 
 					 textArea.appendText(terroristPerson.terroristAttack());
@@ -489,6 +489,11 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 		 endedDay=true;
 	 }
 	 
+	 public static void passOrArrestTextField(String text, TextArea textArea) {
+		 if (text.equals("pass") || text.equals("Pass") || text.equals("PASS")) GuiController.letVisitorPass(textArea);
+		 if (text.equals("arrest") || text.equals("Arrest") || text.equals("ARREST")) GuiController.letVisitorArrest(textArea);
+	 }
+	 
 	 public static void letVisitorPass(TextArea textArea){
 		 if (letHimPass) {
 			Statistics.incPassed(); 
@@ -501,7 +506,7 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 	 
 	 public static void letVisitorArrest(TextArea textArea) {
 		 if (letHimArrest) {
-			 Statistics.incArrested();
+			 Statistics.incArrested(); 
 			 textArea.appendText("***Visitor arrested***\n");
 			 letHimArrest=false;
 			 letHimPass=false;

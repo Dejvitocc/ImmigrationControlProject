@@ -30,7 +30,7 @@ public class PersonWithAccomodation extends Person{
 		System.out.println("Check out date: "+accomodationCheckOutDate);
 		System.out.println("Confirmation number of accomodation: "+accomodationConfirmationNumber);*/
 		
-		StringBuilder builder=new StringBuilder();
+		StringBuilder builder=new StringBuilder(); 
 		
 		builder.append(super.displayInfo());
 		builder.append("Type of accomodation: ").append(accomodationType).append('\n');

@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -18,8 +19,8 @@ public class GUI extends Application {
 	
 	private Label label=new Label("Come to the window!");
 	private Button callVisitor=new Button("Call visitor");
-	private Button pass=new Button("Let pass");
-	private Button arrest=new Button("Arrest");
+	//private Button pass=new Button("Let pass");
+	//private Button arrest=new Button("Arrest");
 	private TextArea textArea = new TextArea();
 	private Label questions=new Label("Questions:");
 	private Button endDay=new Button("End the day");
@@ -32,6 +33,7 @@ public class GUI extends Application {
 	private Button PersonWithStudyPlans=new Button("Did you come here to study?");
 	private Button VisaPerson=new Button("Do you have valid visa?");
 	private Label timeLabel = new Label();
+	private TextField textField = new TextField();
 
     private LocalTime baseTime = LocalTime.now(); 
     private int timeIncrement = 0; 
@@ -54,8 +56,9 @@ public class GUI extends Application {
         GridPane.setConstraints(textArea, 0, 1, 3, 3);
         gridPane.getChildren().add(textArea);
         
-        gridPane.add(pass,1,5);
-        gridPane.add(arrest,2,5);
+        //gridPane.add(pass,1,5);
+        //gridPane.add(arrest,2,5);
+        gridPane.add(textField, 1, 5);
         
         gridPane.add(questions, 1, 7);
          
@@ -74,7 +77,7 @@ public class GUI extends Application {
         
         callVisitor.setOnAction(e -> { 
         	textArea.appendText(GuiController.callVisitorMethod());
-        });
+        }); 
         
         clear.setOnAction(e -> textArea.clear());
         PersonWithHealthProblems.setOnAction(e-> GuiController.displayPersonWithHealthProblems(textArea));
@@ -82,8 +85,16 @@ public class GUI extends Application {
         PersonWithDeclaredItems.setOnAction(e-> GuiController.displayPersonWithDeclaredItems(textArea));
         PersonWithStudyPlans.setOnAction(e-> GuiController.displayPersonWithStudyPlans(textArea));
         VisaPerson.setOnAction(e-> GuiController.visaPersonMethod(textArea));
-        pass.setOnAction(e-> GuiController.letVisitorPass(textArea));
-        arrest.setOnAction(e-> GuiController.letVisitorArrest(textArea));
+        //pass.setOnAction(e-> GuiController.letVisitorPass(textArea));
+        //arrest.setOnAction(e-> GuiController.letVisitorArrest(textArea));
+        //textField.setOnAction(e-> GuiController.passOrArrestTextField(textArea));
+        
+        textField.setOnAction(e -> {
+            String text = textField.getText();
+            GuiController.passOrArrestTextField(text, textArea);
+            textField.clear();
+        });
+        
         endDay.setOnAction(e-> GuiController.displayStatistics(textArea));
         newDay.setOnAction(e-> {
         	textArea.clear(); 
