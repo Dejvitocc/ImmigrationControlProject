@@ -18,9 +18,8 @@ import javafx.stage.Stage;
 public class GUI extends Application {
 	
 	private Label label=new Label("Come to the window!");
+	private Label label1=new Label("Pass or Arrest:");
 	private Button callVisitor=new Button("Call visitor");
-	//private Button pass=new Button("Let pass");
-	//private Button arrest=new Button("Arrest");
 	private TextArea textArea = new TextArea();
 	private Label questions=new Label("Questions:");
 	private Button endDay=new Button("End the day");
@@ -56,9 +55,8 @@ public class GUI extends Application {
         GridPane.setConstraints(textArea, 0, 1, 3, 3);
         gridPane.getChildren().add(textArea);
         
-        //gridPane.add(pass,1,5);
-        //gridPane.add(arrest,2,5);
         gridPane.add(textField, 1, 5);
+        gridPane.add(label1,0,5);
         
         gridPane.add(questions, 1, 7);
          
@@ -85,9 +83,6 @@ public class GUI extends Application {
         PersonWithDeclaredItems.setOnAction(e-> GuiController.displayPersonWithDeclaredItems(textArea));
         PersonWithStudyPlans.setOnAction(e-> GuiController.displayPersonWithStudyPlans(textArea));
         VisaPerson.setOnAction(e-> GuiController.visaPersonMethod(textArea));
-        //pass.setOnAction(e-> GuiController.letVisitorPass(textArea));
-        //arrest.setOnAction(e-> GuiController.letVisitorArrest(textArea));
-        //textField.setOnAction(e-> GuiController.passOrArrestTextField(textArea));
         
         textField.setOnAction(e -> {
             String text = textField.getText();

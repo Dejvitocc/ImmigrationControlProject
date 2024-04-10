@@ -1,7 +1,7 @@
 package Controller;
 
 import java.util.Random;
-import java.util.function.Consumer;										//lambda -GuiController- visaPersonMethod
+import java.util.function.Consumer;										
 
 import Core.InstinctAdvisor;
 import Core.Statistics;
@@ -12,10 +12,16 @@ import javafx.scene.control.TextArea;
 public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jednej viacvrstvej, abstraktná classa spraviť ako person!!!!!!!
 	private static Random random=new Random();
 	
-	private static boolean clickedCallVisitor=false;
-	private static boolean letHimPass=false;
+	private static boolean clickedCallVisitor=false;					//lambda -GuiController- visaPersonMethod
+	private static boolean letHimPass=false;							//exception -GuiController- passOrArrestTextField
 	private static boolean letHimArrest=false;
 	private static boolean endedDay=false;
+	
+	public static class InvalidInputException extends Exception {
+	    public InvalidInputException(String message) {
+	        super(message); 
+	    }
+	}
 	
 	
 	public static String callVisitorMethod() {
@@ -489,15 +495,21 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 		 endedDay=true;
 	 }
 	 
-	 public static void passOrArrestTextField(String text, TextArea textArea) {
-		 if (text.equals("pass") || text.equals("Pass") || text.equals("PASS")) GuiController.letVisitorPass(textArea);
-		 if (text.equals("arrest") || text.equals("Arrest") || text.equals("ARREST")) GuiController.letVisitorArrest(textArea);
-	 }
+	 public static void passOrArrestTextField(String input, TextArea textArea) {					
+		    try {																						//exception
+		        if (input.equalsIgnoreCase("pass")) GuiController.letVisitorPass(textArea);
+		        else if (input.equalsIgnoreCase("arrest")) GuiController.letVisitorArrest(textArea);  
+		        else throw new InvalidInputException("Invalid input! Enter 'pass' or 'arrest'.");
+		        
+		    } catch (InvalidInputException e) {
+		        textArea.appendText("***Error: " + e.getMessage() + "***\n");
+		    }
+		}
 	 
 	 public static void letVisitorPass(TextArea textArea){
 		 if (letHimPass) {
 			Statistics.incPassed(); 
-	        textArea.appendText("***Visitor passed***\n");
+            textArea.appendText("***Visitor is allowed to pass.***\n");
 			letHimPass=false;
 			letHimArrest=false;
 		 }
@@ -507,7 +519,7 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 	 public static void letVisitorArrest(TextArea textArea) {
 		 if (letHimArrest) {
 			 Statistics.incArrested(); 
-			 textArea.appendText("***Visitor arrested***\n");
+			 textArea.appendText("***Visitor is under arrest.***\n");
 			 letHimArrest=false;
 			 letHimPass=false;
 		 }
