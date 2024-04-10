@@ -87,7 +87,7 @@ public class GUI extends Application {
         endDay.setOnAction(e-> GuiController.displayStatistics(textArea));
         newDay.setOnAction(e-> {
         	textArea.clear(); 
-        	GuiController.startNewDay(textArea);
+        	GuiController.startNewDay(textArea); 
         });
 
         
@@ -122,9 +122,9 @@ public class GUI extends Application {
         timeThread.setDaemon(true); //deamon turn off thread when we close app
         timeThread.start();
     }
-        
     
-
+    
+    
     
     
     

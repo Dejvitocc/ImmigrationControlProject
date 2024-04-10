@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.Random;
+import java.util.function.Consumer;										//lambda -GuiController- visaPersonMethod
 
 import Core.InstinctAdvisor;
 import Core.Statistics;
@@ -35,16 +36,21 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 		return statement;	
 	}
 	
-	public static void visaPersonMethod(TextArea textArea) {
-		boolean haveVisa=random.nextBoolean();
-		if (haveVisa) {
-			textArea.appendText("Yes, I do...\n");
-			displayPersonWithValidVisa(textArea);
-		} else {
-			textArea.appendText("No, I do not...\n");
-			displayPersonWithoutValidVisa(textArea);
-		}
-	}
+	
+	public static void visaPersonMethod(TextArea textArea) {					//lambda method
+        
+        Consumer<Boolean> visaConsumer = haveVisa -> {
+            if (haveVisa) {
+                textArea.appendText("Yes, I do...\n");
+                displayPersonWithValidVisa(textArea);
+            } else {
+                textArea.appendText("No, I do not...\n");
+                displayPersonWithoutValidVisa(textArea);
+            }
+        };
+
+        visaConsumer.accept(random.nextBoolean());
+    }
 	 
 	 public static void displayPersonWithHealthProblems(TextArea textArea) {
 		 if (clickedCallVisitor) {
@@ -502,11 +508,11 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 		 }
 		 else textArea.appendText("***You have no one to arrest***\n");
 	 }
-	 
+	  
 	 public static void startNewDay(TextArea textArea) {
 		 if (endedDay) {
-		    Platform.runLater(new Runnable() {
-		        @Override
+		    Platform.runLater(new Runnable() { 
+		        @Override 
 		        public void run() {
 		            textArea.clear();
 		        }
