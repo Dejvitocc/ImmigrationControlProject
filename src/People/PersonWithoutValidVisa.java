@@ -3,6 +3,7 @@ package People;
 import java.time.temporal.ChronoUnit;
 
 import Core.Database;
+import Core.DatabaseOfWantedPeople;
 
 public class PersonWithoutValidVisa extends PersonWithAccomodation{
 		private String reasonForNoVisa;
@@ -35,6 +36,11 @@ public class PersonWithoutValidVisa extends PersonWithAccomodation{
 		    builder.append("Planned activities: ").append(plannedActivities).append("\n").append("\n");
 		    return builder.toString();
 		}
+		
+		@Override
+	    public boolean wantedMethod() {
+	        return DatabaseOfWantedPeople.isWanted(name, surname); 
+	    }
 		
 }
  

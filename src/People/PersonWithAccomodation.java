@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import Core.Database;
 //import Controller.*;
+import Core.DatabaseOfWantedPeople;
 
 public class PersonWithAccomodation extends Person{
 	private String accomodationType;
@@ -41,5 +42,10 @@ public class PersonWithAccomodation extends Person{
 		return builder.toString();
 		
 	}
+	
+	@Override
+    public boolean wantedMethod() {
+        return DatabaseOfWantedPeople.isWanted(name, surname); 
+    }
 }
  

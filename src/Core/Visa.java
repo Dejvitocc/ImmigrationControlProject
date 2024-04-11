@@ -22,7 +22,7 @@ public class Visa {
         System.out.println("Issued date of visa: "+visaIssuedDate);
         System.out.println("Expiration date of visa: "+visaExpirationDate);
         System.out.println("Visa number: "+visaNumber);
-        System.out.println("Visa issuer: "+visaIssuer);*/
+        System.out.println("Visa issuer: "+visaIssuer);*/ 
     	
     	StringBuilder builder = new StringBuilder();
 	    builder.append("Type of visa: ").append(visaType).append("\n");

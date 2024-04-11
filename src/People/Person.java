@@ -3,10 +3,10 @@ package People;
 import Core.Database;
 import Core.DatabaseOfWantedPeople;
 
-public class Person implements PersonInterface{
+public abstract class Person implements PersonInterface{
 	protected static String name;
 	protected static String surname;
-	protected String contact;
+	protected String contact;	
 	 
 	
 	public Person() { 
@@ -25,9 +25,7 @@ public class Person implements PersonInterface{
         return builder.toString();
 	}
 	
-	public boolean wantedMethod() {
-        return DatabaseOfWantedPeople.isWanted(name, surname);
-    }
+	public abstract boolean wantedMethod();
  
 	
 }

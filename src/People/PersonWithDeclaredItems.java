@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Random;
 
 import Core.Database;
+import Core.DatabaseOfWantedPeople;
 
 public class PersonWithDeclaredItems extends Person{
 	private String[] declaredItemsList;
@@ -61,5 +62,9 @@ public class PersonWithDeclaredItems extends Person{
 	    return builder.toString();
 	}
 	
+	@Override
+    public boolean wantedMethod() {
+        return DatabaseOfWantedPeople.isWanted(name, surname); 
+    }
 		
 } 

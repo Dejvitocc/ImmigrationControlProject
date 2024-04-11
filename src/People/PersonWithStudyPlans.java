@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import Core.Database;
 //import Controller.*;
+import Core.DatabaseOfWantedPeople;
 
 public class PersonWithStudyPlans extends Person{
 	private String educationalInstitution;
@@ -39,4 +40,9 @@ public class PersonWithStudyPlans extends Person{
 	    builder.append("Ending date of study: ").append(studyEndDate).append("\n").append("\n"); 
 	    return builder.toString();
 	}
+	
+	@Override
+    public boolean wantedMethod() {
+        return DatabaseOfWantedPeople.isWanted(name, surname); 
+    }
 }

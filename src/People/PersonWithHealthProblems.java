@@ -1,6 +1,7 @@
 package People;
 
 import Core.Database;
+import Core.DatabaseOfWantedPeople;
 
 public class PersonWithHealthProblems extends Person {
 	private String typeOfDisorder;
@@ -39,6 +40,11 @@ public class PersonWithHealthProblems extends Person {
         System.out.println("Allergies: "+allergies);
         System.out.println("Contact info in case of emergency: "+emergencyContactInfo);
         System.out.println("Special medical needs: "+specialMedicalNeeds);*/
+    }
+	
+	@Override
+    public boolean wantedMethod() {
+        return DatabaseOfWantedPeople.isWanted(name, surname); 
     }
 	
 }

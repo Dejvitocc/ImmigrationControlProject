@@ -1,6 +1,7 @@
 package People;
 
 import Core.Database;
+import Core.DatabaseOfWantedPeople;
 import Core.Visa;
 
 public class PersonWithValidVisa extends Person {
@@ -20,5 +21,10 @@ public class PersonWithValidVisa extends Person {
     	builder.append(super.displayInfo());
     	builder.append(visa.displayInfo());
     	return builder.toString(); 
+    }
+    
+    @Override
+    public boolean wantedMethod() {
+        return DatabaseOfWantedPeople.isWanted(name, surname); 
     }
 } 
