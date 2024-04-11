@@ -1,10 +1,12 @@
 package People;
 
+import java.io.Serializable;
+
 import Core.Database;
 import Core.DatabaseOfWantedPeople;
 import Core.Visa;
 
-public class PersonWithValidVisa extends Person {
+public class PersonWithValidVisa extends Person implements Serializable{
     private Visa visa; 
 
     public PersonWithValidVisa() {

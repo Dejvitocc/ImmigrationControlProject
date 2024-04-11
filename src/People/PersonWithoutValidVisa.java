@@ -1,11 +1,12 @@
 package People;
 
+import java.io.Serializable;
 import java.time.temporal.ChronoUnit;
 
 import Core.Database;
 import Core.DatabaseOfWantedPeople;
 
-public class PersonWithoutValidVisa extends PersonWithAccomodation{
+public class PersonWithoutValidVisa extends PersonWithAccomodation implements Serializable{
 		private String reasonForNoVisa;
 		private long intendedStayDuration;
 		private String intendedDestination;
@@ -14,7 +15,7 @@ public class PersonWithoutValidVisa extends PersonWithAccomodation{
 		public PersonWithoutValidVisa() {
 			super();
 			this.reasonForNoVisa=Database.getReasonForNoVisa();
-			this.intendedStayDuration=accomodationCheckInDate.until(accomodationCheckOutDate,ChronoUnit.DAYS);       //odstrániť
+			this.intendedStayDuration=accomodationCheckInDate.until(accomodationCheckOutDate,ChronoUnit.DAYS);     
 			this.intendedDestination=accomodationCity;
 			this.plannedActivities=Database.getPlannedActivities();
 

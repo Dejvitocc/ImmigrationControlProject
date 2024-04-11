@@ -25,7 +25,7 @@ public abstract class Person implements PersonInterface{
         return builder.toString();
 	}
 	
-	public abstract boolean wantedMethod();
+	public abstract boolean wantedMethod(); 
  
 	
 }

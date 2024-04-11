@@ -1,9 +1,11 @@
 package People;
 
+import java.io.Serializable;
+
 import Core.Database;
 import Core.DatabaseOfWantedPeople;
 
-public class PersonWithHealthProblems extends Person {
+public class PersonWithHealthProblems extends Person implements Serializable{
 	private String typeOfDisorder;
 	private String medicines;
 	private String allergies;

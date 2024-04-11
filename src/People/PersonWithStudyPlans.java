@@ -1,12 +1,13 @@
 package People;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import Core.Database;
 //import Controller.*;
 import Core.DatabaseOfWantedPeople;
 
-public class PersonWithStudyPlans extends Person{
+public class PersonWithStudyPlans extends Person implements Serializable{
 	private String educationalInstitution;
 	private String degreeProgram;
 	private String studentID;

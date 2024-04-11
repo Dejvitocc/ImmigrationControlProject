@@ -1,5 +1,6 @@
 package People;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 //import Controller.*;
 import java.util.Random;
@@ -7,7 +8,7 @@ import java.util.Random;
 import Core.Database;
 import Core.DatabaseOfWantedPeople;
 
-public class PersonWithDeclaredItems extends Person{
+public class PersonWithDeclaredItems extends Person implements Serializable{
 	private String[] declaredItemsList;
 	private double totalValueOfDeclaredItems;
 	private LocalDate declarationDate;
@@ -54,7 +55,7 @@ public class PersonWithDeclaredItems extends Person{
         System.out.println("Name of customs officer: "+customsOfficerName);*/
 		
 		StringBuilder builder = new StringBuilder();
-		builder.append(super.displayInfo()); // Použite metódu z nadradenej triedy na získanie základných informácií
+		builder.append(super.displayInfo());
 	    builder.append("Declared items: ").append(declaredItemsList[0]).append(", ").append(declaredItemsList[1]).append("\n");
 	    builder.append("Total value of declared items: : ").append(totalValueOfDeclaredItems).append("\n");
 	    builder.append("Date of declaration: ").append(declarationDate).append("\n");

@@ -1,7 +1,7 @@
 package People;
 
 
-public class LeftHandedTerrorrist extends Terrorist implements TerroristInterface{
+public class LeftHandedTerrorrist extends Terrorist{ 
 
 	@Override
 	public String terroristAttack() {

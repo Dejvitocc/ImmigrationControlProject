@@ -1,12 +1,13 @@
 package People;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import Core.Database;
 //import Controller.*;
 import Core.DatabaseOfWantedPeople;
 
-public class PersonWithAccomodation extends Person{
+public class PersonWithAccomodation extends Person implements Serializable{
 	private String accomodationType;
 	protected String accomodationCity;
 	protected LocalDate accomodationCheckInDate;

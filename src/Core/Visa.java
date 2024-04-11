@@ -1,8 +1,9 @@
 package Core;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Visa {
+public class Visa implements Serializable {
     private String visaType;
     private LocalDate visaIssuedDate;
     private LocalDate visaExpirationDate;
