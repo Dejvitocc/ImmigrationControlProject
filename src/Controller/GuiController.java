@@ -14,7 +14,7 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 	
 	private static boolean clickedCallVisitor=false;					//lambda -GuiController- visaPersonMethod
 	private static boolean letHimPass=false;							//exception -GuiController- passOrArrestTextField
-	private static boolean letHimArrest=false;
+	private static boolean letHimArrest=false;							//default method implementation -Terrorist Interface-
 	private static boolean endedDay=false;
 	
 	public static class InvalidInputException extends Exception {
@@ -448,9 +448,9 @@ public class GuiController { 											//odovzdať UML do aisu, 2 vetvy do jedn
 						 Statistics.incArrested();
 						 textArea.appendText("***You can call another visitor***\n");
 						 return;
-
+ 
 					 }
-					 
+					  
 					 
 				 }
 		        
