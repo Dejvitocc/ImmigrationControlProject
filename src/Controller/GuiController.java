@@ -20,6 +20,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 	private static boolean letHimArrest=false;							//default method implementation -Terrorist Interface-
 	private static boolean endedDay=false;								//serialisation -GuiController-
 																		//inner class -PersonWithValidVisa- visa class, inner interface -Database-
+																		//RTTI -GuiController-
 		
 	public static void serializeObject(String filename, Serializable object) {				//serialisation
         try {
@@ -151,10 +152,12 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 	        	letHimPass=true;
 	        	letHimArrest=true;
 			}
-			 
+			 GuiController.displayObjectType(person, textArea);
 		 }else textArea.appendText("***No visitor around, please, call a visitor***\n");
 		 
 		 PersonWithHealthProblems deserializedPerson = (PersonWithHealthProblems) GuiController.deserializeObject("person_with_health_problems.ser");
+		 
+		 
 	    }
 	 
 	 public static void displayPersonWithAccomodation(TextArea textArea) {
@@ -227,7 +230,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 	        	letHimPass=true;
 	        	letHimArrest=true;
 			}
-	        
+			GuiController.displayObjectType(person, textArea);
 		 }else textArea.appendText("***No visitor around, please, call a visitor***\n");
 		 
 		 PersonWithAccomodation deserializedPerson = (PersonWithAccomodation) GuiController.deserializeObject("person_with_accomodation.ser");
@@ -304,7 +307,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 		        	letHimArrest=true;
 				}
 
-		        
+				GuiController.displayObjectType(person, textArea);
 			 }else textArea.appendText("***No visitor around, please, call a visitor***\n");
 		 
 		 PersonWithDeclaredItems deserializedPerson = (PersonWithDeclaredItems) GuiController.deserializeObject("person_with_declared_items.ser");
@@ -380,7 +383,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 		        	letHimArrest=true;
 				}
 
-		        
+				GuiController.displayObjectType(person, textArea);
 			 }else textArea.appendText("***No visitor around, please, call a visitor***\n");
 		 
 		 PersonWithoutValidVisa deserializedPerson = (PersonWithoutValidVisa) GuiController.deserializeObject("person_without_valid_visa.ser");
@@ -457,7 +460,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 		        	letHimArrest=true;
 				}
 
-		        
+				GuiController.displayObjectType(person, textArea);
 			 }else textArea.appendText("***No visitor around, please, call a visitor***\n");
 		 
 		 PersonWithStudyPlans deserializedPerson = (PersonWithStudyPlans) GuiController.deserializeObject("person_with_study_plans.ser");
@@ -533,7 +536,8 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 		        	letHimPass=true;
 		        	letHimArrest=true;
 				}
-
+				
+				GuiController.displayObjectType(person, textArea);
 		        
 			 }else textArea.appendText("***No visitor around, please, call a visitor***\n");
 		 
@@ -595,7 +599,23 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 		}
 	 
 	 
-	
+	 public static void displayObjectType(Object object, TextArea textArea) {					//RTTI
+		    if (object instanceof PersonWithHealthProblems) {
+		        textArea.appendText("\n***Person with health problems has come.***\n");
+		    } else if (object instanceof PersonWithAccomodation) {
+		        textArea.appendText("\n***Person with accomodation booked has come.***\n");
+		    } else if (object instanceof PersonWithDeclaredItems) {
+		        textArea.appendText("\n***Person with declared items has come.****\n");
+		    } else if (object instanceof PersonWithStudyPlans) {
+		        textArea.appendText("\n***Person with study plans has come***\n");
+		    } else if (object instanceof PersonWithValidVisa) {
+		        textArea.appendText("\n***Person with valid visa has come.***\n");
+		    } else if (object instanceof PersonWithoutValidVisa) {
+		        textArea.appendText("\n***Person without valid visa has come.***\n");
+		    } else {
+		        textArea.appendText("\n***Unknown object type.***\n");
+		    }
+		}
 	
 	 
 }
