@@ -19,6 +19,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 	private static boolean letHimPass=false;							//exception -GuiController- passOrArrestTextField
 	private static boolean letHimArrest=false;							//default method implementation -Terrorist Interface-
 	private static boolean endedDay=false;								//serialisation -GuiController-
+																		//inner class -PersonWithValidVisa- visa class, inner interface -Database-
 		
 	public static void serializeObject(String filename, Serializable object) {				//serialisation
         try {

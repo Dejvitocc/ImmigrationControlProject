@@ -6,6 +6,44 @@ import java.util.Random;
 
 public class Database {
 	
+	
+	interface DatabaseInterface{
+		int randomMethod();
+		void setArrayOfVisaExpirationDate();
+		void setArrayOfAccomodationCheckOutDate();
+		void setArrayOfStudyEndDate();
+		String getName();
+		String getSurname();
+		String getContacts();
+		String getTypeOfDisorder();
+		String getMedicines();
+		String getAllergies();
+		String getSpecialMedicalNeeds();
+		String getVisaType();
+		String getVisaNumber();
+		String getVisaIssuer();
+		LocalDate getVisaIssuedDate();
+		LocalDate getVisaExpirationDate();
+		
+		interface DatabaseInterface1{
+			String getAccomodationType();
+			String getAccomodationCity();
+			String getAccomodationConfirmationNumber();
+			LocalDate getAccomodationChechInDate();
+			LocalDate getAccomodationChechOutDate();
+			String getEducationalInstitution();
+			String getDegreeProgram();
+			String getStudentID();
+			LocalDate getStudyStartDate();
+			LocalDate getStudyEndDate();
+			String[] getDeclaredItemList();
+			LocalDate getDeclarationDate();
+			String getCustomsOfficerName();
+			String getReasonForNoVisa(); 
+			String getPlannedActivities();
+		}
+	}
+	
 	private static String[] arrayOfNames= {"Elias", "Ava", "Leo", "Sophie", "Mateo"};
 	private static String[] arrayOfSurnames= {"Smith", "Johnson","Lee","Silva", "Martinez"};
 	private static String[] arrayOfContacts= {"0929456728", "0997105643","0947151333","0958745349", "0914835412"};
