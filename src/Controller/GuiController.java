@@ -6,15 +6,17 @@ import java.util.Random;
 import java.util.function.Consumer;										
 
 import Core.InstinctAdvisor;
+
 import Core.SerializationHelper;
 import Core.Statistics;
+import Core.PassOrArrestException;
 import People.*;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
 public class GuiController { 											//2 vetvy do jednej viacvrstvej
 	private static Random random=new Random();
-	
+																		//threads -GUI- 
 	private static boolean clickedCallVisitor=false;					//lambda -GuiController- visaPersonMethod
 	private static boolean letHimPass=false;							//exception -GuiController- passOrArrestTextField
 	private static boolean letHimArrest=false;							//default method implementation -Terrorist Interface-
@@ -22,14 +24,14 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 																		//inner class -PersonWithValidVisa- visa class, inner interface -Database-
 																		//RTTI -GuiController-
 		
-	public static void serializeObject(String filename, Serializable object) {				//serialisation
+	public static void serializeObject(String filename, Serializable object) {				//serialisation 
         try {
             SerializationHelper.serializeObject(filename, object);
             System.out.println("Object serialized successfully.");
         } catch (IOException e) {
-            System.out.println("Error during serialization: " + e.getMessage());
+            System.out.println("Error during serialization: " + e.getMessage()); 
         }
-    }
+    } 
 
     public static Object deserializeObject(String filename) {
         try {
@@ -69,7 +71,7 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 	
 	public static void visaPersonMethod(TextArea textArea) {					//lambda method
         
-        Consumer<Boolean> visaConsumer = haveVisa -> { 
+        Consumer<Boolean> visaConsumer = haveVisa -> {   
             if (haveVisa) {
                 textArea.appendText("Yes, I do...\n");
                 displayPersonWithValidVisa(textArea);  
@@ -552,17 +554,19 @@ public class GuiController { 											//2 vetvy do jednej viacvrstvej
 		 textArea.appendText(statisticsInfo);
 		 endedDay=true;
 	 }
-	 
-	 public static void passOrArrestTextField(String input, TextArea textArea) {					
-		    try {																						//exception
-		        if (input.equalsIgnoreCase("pass")) GuiController.letVisitorPass(textArea);
-		        else if (input.equalsIgnoreCase("arrest")) GuiController.letVisitorArrest(textArea);  
-		        else throw new InvalidInputException("Invalid input! Enter 'pass' or 'arrest'.");
-		        
-		    } catch (InvalidInputException e) {
-		        textArea.appendText("***Error: " + e.getMessage() + "***\n");
+	  
+
+	public static void passOrArrestTextField(String input, TextArea textArea) {				//exception
+		 try {
+		     if (input.equalsIgnoreCase("pass")) GuiController.letVisitorPass(textArea);
+		     else if (input.equalsIgnoreCase("arrest")) GuiController.letVisitorArrest(textArea);
+		     else throw new PassOrArrestException("Invalid input! Enter 'pass' or 'arrest'.");
+		              
+		      } catch (PassOrArrestException e) {
+		            textArea.appendText("***Error: " + e.getMessage() + "***\n");
+		        }
 		    }
-		}
+		
 	 
 	 public static void letVisitorPass(TextArea textArea){
 		 if (letHimPass) {
